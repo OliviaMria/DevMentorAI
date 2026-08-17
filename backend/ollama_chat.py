@@ -1,5 +1,6 @@
 import requests
 from memoria import carregar_memoria, guardar_informacao
+from interpretador import interpretar_mensagem
 
 
 def perguntar_ollama(pergunta):
@@ -49,19 +50,21 @@ while True:
 
     texto = pergunta.lower()
 
-    if texto.startswith("estou estudando "):
-        linguagem = pergunta[len("estou estudando "):].strip()
-
-        guardar_informacao("linguagem", linguagem)
-
-        print(
-            f"DevMentor: Entendido! Vou guardar que estás estudando {linguagem}."
-        )
-        continue
-
     if texto == "sair":
         print("Até logo!")
         break
+
+    if texto != "sair":
+        resultado = interpretar_mensagem(pergunta)
+
+        tipo = resultado.get("tipo")
+        valor = resultado.get("valor")
+
+        if tipo in ["nome", "linguagem", "nivel", "objetivo", "projeto"]:
+            guardar_informacao(tipo, valor)
+
+            print(f"DevMentor: Entendido! Guardei {tipo}: {valor}.")
+            continue
 
     resposta = perguntar_ollama(pergunta)
 

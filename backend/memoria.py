@@ -1,7 +1,7 @@
 import json
 import os
 
-ARQUIVO_MEMORIA = os.path.join(
+ARQUIVO_MEMORIA = os.path.join( 
     os.path.dirname(__file__),
     "memoria.json"
 )
