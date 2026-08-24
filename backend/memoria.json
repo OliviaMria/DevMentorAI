@@ -1,6 +1,7 @@
 {
-    "nome": "Ana",
+    "nome": "João",
     "linguagem": "Python",
     "nivel": "iniciante",
-    "objetivo": "aprender desenvolvimento web"
+    "objetivo": "aprender desenvolvimento web",
+    "projeto": "uma loja online"
 }
