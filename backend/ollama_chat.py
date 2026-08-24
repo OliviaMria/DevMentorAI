@@ -65,6 +65,12 @@ while True:
 
             print(f"DevMentor: Entendido! Guardei {tipo}: {valor}.")
             continue
+        if texto == "qual é o meu projeto?":
+           memoria = carregar_memoria()
+        projeto = memoria.get("projeto", "não informado")
+
+        print(f"DevMentor: O teu projeto atual é {projeto}.")
+        continue
 
     resposta = perguntar_ollama(pergunta)
 
